@@ -7,6 +7,7 @@ use App\Form\InterviewType;
 use App\Repository\InterviewRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -14,8 +15,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class InterviewController extends AbstractController
 {
     #[Route('/', name: 'app_interview_index', methods: ['GET'])]
-    public function index(InterviewRepository $interviewRepository): Response
+    public function index(RequestStack $requestStack, InterviewRepository $interviewRepository): Response
     {
+        $session = $requestStack->getSession();
+        if (!$session->has('total')) {
+            $session->set('total', 0);
+        }
+
+        $total = $session->get('total');
+        
         return $this->render('interview/index.html.twig', [
             'interviews' => $interviewRepository->findAll(),
         ]);
@@ -31,10 +39,12 @@ class InterviewController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $interviewRepository->save($interview, true);
 
+            $this->addFlash('success', 'The new interview has been created! :)');
+
             return $this->redirectToRoute('app_interview_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('interview/new.html.twig', [
+        return $this->render('interview/new.html.twig', [
             'interview' => $interview,
             'form' => $form,
         ]);
@@ -57,10 +67,12 @@ class InterviewController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $interviewRepository->save($interview, true);
 
+            $this->addFlash('success', 'The interview has been updated! :)');
+
             return $this->redirectToRoute('app_interview_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('interview/edit.html.twig', [
+        return $this->render('interview/edit.html.twig', [
             'interview' => $interview,
             'form' => $form,
         ]);
@@ -72,6 +84,8 @@ class InterviewController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$interview->getId(), $request->request->get('_token'))) {
             $interviewRepository->remove($interview, true);
         }
+
+        $this->addFlash('danger', 'The interview has been deleted! :O');
 
         return $this->redirectToRoute('app_interview_index', [], Response::HTTP_SEE_OTHER);
     }

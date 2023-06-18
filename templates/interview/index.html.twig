@@ -19,6 +19,8 @@
 			</tr>
 		</thead>
 		<tbody>
+			<h1>{{ app.session.get('total') }}</h1>
+
 			{% for interview in interviews %}
 				<tr>
 					<td>{{ interview.job }}</td>

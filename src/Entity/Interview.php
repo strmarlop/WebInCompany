@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\InterviewRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: InterviewRepository::class)]
 class Interview
@@ -14,23 +15,42 @@ class Interview
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank(message: 'Don\'t leave me empty')]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'The job name entered is too long, it should not exceed {{ limit }} characters.'
+    )]
     private ?string $job = null;
+
+
+
 
     // #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     // private ?\DateTimeInterface $date = null;
 
     
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Don\'t leave me empty')]
     private ?string $date = null;
+
+
+
+
 
 
     #[ORM\ManyToOne(inversedBy: 'interviews')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Statut $statut = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\NotBlank(message: 'Don\'t leave me empty')]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'The company name entered is too long, it should not exceed {{ limit }} characters.'
+    )]
     private ?string $company = null;
+    
 
     public function getId(): ?int
     {

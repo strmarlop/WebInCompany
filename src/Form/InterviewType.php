@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Interview;
+use App\Entity\Statut;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,7 +17,14 @@ class InterviewType extends AbstractType
             ->add('job')
             ->add('company')
             ->add('date')
-            ->add('statut', null, ['choice_label' => 'name']);
+            ->add('statut', EntityType::class, [
+                'class' => Statut::class,
+                'choice_label' => 'name',
+                'multiple' => false,
+                'expanded' => false,
+            ]);
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
