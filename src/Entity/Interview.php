@@ -15,12 +15,8 @@ class Interview
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Don\'t leave me empty')]
-    #[Assert\Length(
-        max: 255,
-        maxMessage: 'The job name entered is too long, it should not exceed {{ limit }} characters.'
-    )]
     private ?string $job = null;
 
 
@@ -43,14 +39,10 @@ class Interview
     #[ORM\JoinColumn(nullable: false)]
     private ?Statut $statut = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Don\'t leave me empty')]
-    #[Assert\Length(
-        max: 255,
-        maxMessage: 'The company name entered is too long, it should not exceed {{ limit }} characters.'
-    )]
     private ?string $company = null;
-    
+
 
     public function getId(): ?int
     {
