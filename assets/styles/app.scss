@@ -1,0 +1,13 @@
+@import "~bootswatch/dist/flatly/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/flatly/bootswatch";
+
+$nav-color: #003468;
+$primary-color: #000000;
+$secondary-color: #e36300;
+$tertiary-color: #ffffff;
+$background-color: #ffefdd;
+
+body {
+    background-color: $background-color;
+}

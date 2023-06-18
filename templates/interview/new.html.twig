@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Interview
+{% endblock %}
+
+{% block body %}
+	<h2>Create a new Interview</h2>
+
+	{{ include('interview/_form.html.twig') }}
+
+	<a href="{{ path('app_interview_index') }}">back to list</a>
+{% endblock %}
