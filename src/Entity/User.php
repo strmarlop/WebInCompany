@@ -31,13 +31,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    // #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Interview::class)]
-    // private Collection $interviews;
+    #[ORM\OneToMany(mappedBy: 'owner', targetEntity: Interview::class)]
+    private Collection $interviews;
 
-    // public function __construct()
-    // {
-    //     $this->interviews = new ArrayCollection();
-    // }
+    public function __construct()
+    {
+        $this->interviews = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -112,30 +112,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection<int, Interview>
      */
-    // public function getInterviews(): Collection
-    // {
-    //     return $this->interviews;
-    // }
+    public function getInterviews(): Collection
+    {
+        return $this->interviews;
+    }
 
-    // public function addInterview(Interview $interview): static
-    // {
-    //     if (!$this->interviews->contains($interview)) {
-    //         $this->interviews->add($interview);
-    //         $interview->setOwner($this);
-    //     }
+    public function addInterview(Interview $interview): static
+    {
+        if (!$this->interviews->contains($interview)) {
+            $this->interviews->add($interview);
+            $interview->setOwner($this);
+        }
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-    // public function removeInterview(Interview $interview): static
-    // {
-    //     if ($this->interviews->removeElement($interview)) {
-    //         // set the owning side to null (unless already changed)
-    //         if ($interview->getOwner() === $this) {
-    //             $interview->setOwner(null);
-    //         }
-    //     }
+    public function removeInterview(Interview $interview): static
+    {
+        if ($this->interviews->removeElement($interview)) {
+            // set the owning side to null (unless already changed)
+            if ($interview->getOwner() === $this) {
+                $interview->setOwner(null);
+            }
+        }
 
-    //     return $this;
-    // }
+        return $this;
+    }
 }
