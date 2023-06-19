@@ -26,7 +26,7 @@ class InterviewFixtures extends Fixture implements DependentFixtureInterface
             $interview = new Interview();
             $interview->setJob($interviewInfo['job']);
             $interview->setCompany($interviewInfo['company']);
-            $interview->setDate($interviewInfo['date']);
+            // $interview->setDate($interviewInfo['date']);
             $interview->setStatut($this->getReference('statut_' . ($interviewInfo['statut'])));
 
             $manager->persist($interview);

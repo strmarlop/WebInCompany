@@ -30,9 +30,9 @@ class Interview
     // private ?\DateTimeInterface $date = null;
 
     
-    #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'Don\'t leave me empty')]
-    private ?string $date = null;
+    // #[ORM\Column(length: 255)]
+    // #[Assert\NotBlank(message: 'Don\'t leave me empty')]
+    // private ?string $date = null;
 
 
 
@@ -68,17 +68,17 @@ class Interview
 
         return $this;
     }
-    public function getDate(): ?string
-    {
-        return $this->date;
-    }
+    // public function getDate(): ?string
+    // {
+    //     return $this->date;
+    // }
 
-    public function setDate(string $date): static
-    {
-        $this->date = $date;
+    // public function setDate(string $date): static
+    // {
+    //     $this->date = $date;
 
-        return $this;
-    }
+    //     return $this;
+    // }
     // public function getDate(): ?\DateTimeInterface
     // {
     //     return $this->date;
