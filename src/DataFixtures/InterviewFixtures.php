@@ -22,10 +22,6 @@ class InterviewFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-
-        // $faker = Factory::create();
-
-
         foreach (self:: INTERVIEWS as $key=>$interviewInfo)
         {
             $interview = new Interview();

@@ -64,12 +64,6 @@ class InterviewController extends AbstractController
     #[Route('/{id}/edit', name: 'app_interview_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Interview $interview, InterviewRepository $interviewRepository): Response
     {
-
-        // if ($this->getUser() !== $interview->getOwner()) {
-        //     // If not the owner, throws a 403 Access Denied exception
-        //     throw $this->createAccessDeniedException('Only the owner can edit the interview!');
-        // }
-
         $form = $this->createForm(InterviewType::class, $interview);
         $form->handleRequest($request);
 

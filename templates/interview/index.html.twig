@@ -21,14 +21,25 @@
 			<tbody>
 
 				{% for interview in interviews %}
-					{% if app.user.id == interview.owner.id %}
+					{{ dump(app.user.id) }}
+					{{ dump(interview.id) }}
+
+					{# {% if app.user.id == interview.owner.id %} #}
+					{% if app.user == interview.owner.id %}
 						<tr>
-							<td>{{ interview.job }}</td>
-							<td>{{ interview.company }}</td>
-							<td>{{ interview.statut.name }}</td>
+							<td>
+								{{ interview.job }}
+							</td>
+							<td>
+								{{ interview.company }}
+							</td>
+							<td>
+								{{ interview.statut.name }}
+							</td>
 							{# <td>{{ interview.date }}</td> #}
 							<td>
-								<a href="{{ path('app_interview_edit', {'id': interview.id}) }}">Edit</a>
+								<a href="{{ path('app_interview_edit', {'id': interview.id}) }}">
+									Edit</a>
 							</td>
 							<td>
 								<a href="{{ path('app_interview_show', {'id': interview.id}) }}">See</a>
@@ -41,7 +52,6 @@
 					</tr>
 				{% endfor %}
 			</tbody>
-		</table>
-	</div>
-
-{% endblock %}
+		</tbody>
+	</table>
+</div>{% endblock %}
