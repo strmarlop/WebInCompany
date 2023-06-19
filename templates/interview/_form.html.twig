@@ -1,4 +1,41 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{# <form>
+	<fieldset>
+		<div class="form-group">
+			<label for="exampleInputJob" class="form-label mt-4">Job Name</label>
+			<input type="text" class="form-control" id="interview_job" name="interview[job]" aria-describedby="emailHelp" placeholder="Job Name">
+		</div>
+		<div class="form-group">
+			<label for="exampleInputCompany" class="form-label mt-4">Company</label>
+			<input type="text" class="form-control" id="interview_company" name="interview[company]" placeholder="Company">
+		</div> #}
+		{# <div class="form-group">
+																							<label for="exampleInputDate" class="form-label mt-4">Date</label>
+																							<input type="date" class="form-control" id="exampleInputDate">
+																						</div> #}
+		{# <div class="form-group">
+			<label for="exampleSelect1" class="form-label mt-4">Satut</label>
+			<select class="form-select" id="interview_statut">
+				<option value="41">Meeting HR</option>
+				<option value="42">Technical Test</option>
+				<option value="43">Meeting CTO</option>
+				<option value="44">Permanent Contract</option>
+			</select>
+		</div> #}
+		{# <button class="btn">{{ button_label|default('Save') }}</button> #}
+
+		{# <button class="btn">Save</button>
+										
+												<button type="submit" class="btn btn-primary">Submit</button> #}
+	{# </fieldset>
+</form> #}
+
+
+<div class="container">
+	{{ form_start(form, {'attr': {'novalidate':'novalidate'}}) }}
+	<div class="form-group">{{ form_row(form.job, {'attr': {'class':'form-control'}}) }}</div>
+	<div class="form-group">{{ form_row(form.company, {'attr': {'class':'form-control'}}) }}</div>
+	<div class="form-group">{{ form_row(form.statut, {'attr': {'class':'form-control'}}) }}</div>
+	{# {{ form_widget(form) }} #}
+	<button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+	{{ form_end(form) }}
+</div>

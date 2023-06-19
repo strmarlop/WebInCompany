@@ -11,3 +11,23 @@ $background-color: #ffefdd;
 body {
     background-color: $background-color;
 }
+
+
+div.itw_info,
+div.itw_show {
+    width: 70%;
+    margin: auto;
+}
+
+div.itw_edit,
+div.itw_new {
+    width: 50%;
+    margin: auto;
+}
+
+
+
+div.itw_info.mt-4 a.btn.btn-primary.float-right,
+div.itw_show.mt-4 a.btn.btn-primary.float-right {
+    margin-bottom: 1em;
+}

@@ -4,43 +4,44 @@
 {% endblock %}
 
 {% block body %}
-	<h2>Interview's Information</h2>
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Job</th>
-				<th>Company</th>
-				<th>Statut</th>
-				<th>Date</th>
-				<th>Edit interview</th>
-				<th>Interview details</th>
-
-			</tr>
-		</thead>
-		<tbody>
-			{# <h1>{{ app.session.get('total') }}</h1> #}
-
-			{% for interview in interviews %}
+	<div class="itw_info mt-4">
+		<h2>Interview's Information</h2>
+		<a class="btn btn-primary float-right" href="{{ path('app_interview_new') }}" role="button">Create a new interview</a>
+		<table class="table table-bordered mt-4">
+			<thead>
 				<tr>
-					<td>{{ interview.job }}</td>
-					<td>{{ interview.company }}</td>
-					<td>{{ interview.statut.name }}</td>
-					<td>{{ interview.date }}</td>
-					<td>
-						<a href="{{ path('app_interview_edit', {'id': interview.id}) }}">Edit</a>
-					</td>
-					<td>
-						<a href="{{ path('app_interview_show', {'id': interview.id}) }}">See</a>
-					</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="4">no records found</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+					<th>Job</th>
+					<th>Company</th>
+					<th>Statut</th>
+					{# <th>Date</th> #}
+					<th>Edit interview</th>
+					<th>Details</th>
 
-	<a href="{{ path('app_interview_new') }}">Create a new interview</a>
+				</tr>
+			</thead>
+			<tbody>
+				{# <h1>{{ app.session.get('total') }}</h1> #}
+
+				{% for interview in interviews %}
+					<tr>
+						<td>{{ interview.job }}</td>
+						<td>{{ interview.company }}</td>
+						<td>{{ interview.statut.name }}</td>
+						{# <td>{{ interview.date }}</td> #}
+						<td>
+							<a href="{{ path('app_interview_edit', {'id': interview.id}) }}">Edit</a>
+						</td>
+						<td>
+							<a href="{{ path('app_interview_show', {'id': interview.id}) }}">See</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="4">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
 {% endblock %}
