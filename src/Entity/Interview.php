@@ -19,6 +19,22 @@ class Interview
     #[Assert\NotBlank(message: 'Don\'t leave me empty')]
     private ?string $job = null;
 
+
+
+
+    // #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    // private ?\DateTimeInterface $date = null;
+
+    
+    // #[ORM\Column(length: 255)]
+    // #[Assert\NotBlank(message: 'Don\'t leave me empty')]
+    // private ?string $date = null;
+
+
+
+
+
+
     #[ORM\ManyToOne(inversedBy: 'interviews')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Statut $statut = null;
@@ -47,7 +63,29 @@ class Interview
 
         return $this;
     }
-    
+    // public function getDate(): ?string
+    // {
+    //     return $this->date;
+    // }
+
+    // public function setDate(string $date): static
+    // {
+    //     $this->date = $date;
+
+    //     return $this;
+    // }
+    // public function getDate(): ?\DateTimeInterface
+    // {
+    //     return $this->date;
+    // }
+
+    // public function setDate(\DateTimeInterface $date): static
+    // {
+    //     $this->date = $date;
+
+    //     return $this;
+    // }
+
     public function getStatut(): ?Statut
     {
         return $this->statut;
