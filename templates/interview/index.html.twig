@@ -16,25 +16,25 @@
 					{# <th>Date</th> #}
 					<th>Edit interview</th>
 					<th>Details</th>
-
 				</tr>
 			</thead>
 			<tbody>
-				{# <h1>{{ app.session.get('total') }}</h1> #}
 
 				{% for interview in interviews %}
-					<tr>
-						<td>{{ interview.job }}</td>
-						<td>{{ interview.company }}</td>
-						<td>{{ interview.statut.name }}</td>
-						{# <td>{{ interview.date }}</td> #}
-						<td>
-							<a href="{{ path('app_interview_edit', {'id': interview.id}) }}">Edit</a>
-						</td>
-						<td>
-							<a href="{{ path('app_interview_show', {'id': interview.id}) }}">See</a>
-						</td>
-					</tr>
+					{% if app.user.id == interview.owner.id %}
+						<tr>
+							<td>{{ interview.job }}</td>
+							<td>{{ interview.company }}</td>
+							<td>{{ interview.statut.name }}</td>
+							{# <td>{{ interview.date }}</td> #}
+							<td>
+								<a href="{{ path('app_interview_edit', {'id': interview.id}) }}">Edit</a>
+							</td>
+							<td>
+								<a href="{{ path('app_interview_show', {'id': interview.id}) }}">See</a>
+							</td>
+						</tr>
+					{% endif %}
 				{% else %}
 					<tr>
 						<td colspan="4">no records found</td>

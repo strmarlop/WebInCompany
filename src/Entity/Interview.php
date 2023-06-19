@@ -43,6 +43,9 @@ class Interview
     #[Assert\NotBlank(message: 'Don\'t leave me empty')]
     private ?string $company = null;
 
+    #[ORM\ManyToOne(inversedBy: 'interviews')]
+    private ?User $owner = null;
+
     // #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     // private ?\DateTimeInterface $date = null;
 
@@ -121,4 +124,16 @@ class Interview
 
     //     return $this;
     // }
+
+    public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): static
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
 }

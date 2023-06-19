@@ -33,6 +33,7 @@ class InterviewFixtures extends Fixture implements DependentFixtureInterface
             $interview->setCompany($interviewInfo['company']);
             // $interview->setDate($interviewInfo['date']);
             $interview->setStatut($this->getReference('statut_' . ($interviewInfo['statut'])));
+            $interview->setOwner($this->getReference('user_' . UserFixtures::USERS[array_rand(UserFixtures::USERS)]['email']));
 
             $manager->persist($interview);
         }
@@ -45,6 +46,8 @@ class InterviewFixtures extends Fixture implements DependentFixtureInterface
         // Tu retournes ici toutes les classes de fixtures dont ProgramFixtures dépend
         return [
           StatutFixtures::class,
+          UserFixtures::class,
+
         ];
     }
 }
