@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 
-// #[Route('/interview')]
+#[Route('/interview')]
 class InterviewController extends AbstractController
 {
     #[Route('/', name: 'app_interview_index', methods: ['GET'])]
