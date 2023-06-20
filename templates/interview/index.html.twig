@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interviews Information
+{% endblock %}
+
+{% block body %}
+	<div class="itw_info mt-4">
+		<h2>Interview's Information</h2>
+		<a class="btn btn-primary float-right" href="{{ path('interview_new') }}" role="button">Create a new interview</a>
+		<table class="table table-bordered mt-4">
+			<thead>
+				<tr>
+					<th>Job</th>
+					<th>Company</th>
+					<th>Statut</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for interview in interviews %}
+					<tr>
+						<td>{{ interview.job }}</td>
+						<td>{{ interview.company }}</td>
+						<td>{{ interview.statut.name }}</td>
+						<td>
+							<a href="{{ path('interview_show', {'id': interview.id}) }}">See</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</tbody>
+	</table>
+</div>{% endblock %}

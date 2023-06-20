@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="itw_login mt-4">
+		<h2>Login</h2>
+
+		{% if error %}
+			<div class="form-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+		<form action="{{ path('login') }}" method="post">
+			<div class="form-group">
+				<label for="username">Email:</label>
+				<input type="email" class="form-control" id="username" name="_username" placeholder="Enter your email">
+				<br>
+				<label for="password">Password:</label>
+				<input type="password" class="form-control" id="password" name="_password" placeholder="Enter your password">
+
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+				<button type="submit" class="btn btn-primary mt-4">Login</button>
+			</form>
+			{# </div> #}
+		</div>
+	{% endblock %}

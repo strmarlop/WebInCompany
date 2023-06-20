@@ -1,0 +1,43 @@
+@import "~bootswatch/dist/flatly/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/flatly/bootswatch";
+
+$nav-color: #003468;
+$primary-color: #000000;
+$secondary-color: #e36300;
+$tertiary-color: #ffffff;
+$background-color: #ffefdd;
+
+body {
+    background-color: $background-color;
+}
+
+div.itw_info,
+div.itw_show {
+    width: 70%;
+    margin: auto;
+}
+
+div.itw_edit,
+div.itw_new,
+div.itw_register,
+div.itw_login {
+    width: 50%;
+    margin: auto;
+}
+
+div.no_itws {
+    width: 40%;
+    margin: auto;
+}
+
+div.itw_info.mt-4 a.btn.btn-primary.float-right,
+div.itw_show.mt-4 a.btn.btn-primary.float-right {
+    margin-bottom: 1em;
+}
+
+div.itw_login.mt-4 div.form-error,
+div.itw_register.mt-4 div.container form div ul,
+div.itw_register.mt-4 div.container form div.form-group div ul {
+    color: red;
+}

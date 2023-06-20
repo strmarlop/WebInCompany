@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Interview
+{% endblock %}
+
+{% block body %}
+	<div class="itw_show mt-4">
+		<h2>Interview -
+			{{ interview.job }}</h2>
+		<a class="btn btn-primary mt-4" href="{{ path('interview_index') }}" role="button">Back to my interviews</a>
+		<table class="table mt-4">
+			<tbody>
+				<tr>
+					<th>Job</th>
+					<td>{{ interview.job }}</td>
+				</tr>
+				<tr>
+					<th>Company</th>
+					<td>{{ interview.company }}</td>
+				</tr>
+				<tr>
+					<th>Status interview</th>
+					<td>{{ interview.statut.name }}</td>
+				</tr>
+			</tbody>
+		</table>
+		<a class="btn btn-primary float-left mr-4" href="{{ path('interview_edit', {'id': interview.id}) }}" role="button">Edit this interview</a>
+		{{ include('interview/_delete_form.html.twig') }}
+	</div>
+{% endblock %}
