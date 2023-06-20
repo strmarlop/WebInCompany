@@ -6,37 +6,25 @@
 {% block body %}
 	<div class="itw_info mt-4">
 		<h2>Interview's Information</h2>
-		<a class="btn btn-primary float-right" href="{{ path('app_interview_new') }}" role="button">Create a new interview</a>
+		<a class="btn btn-primary float-right" href="{{ path('interview_new') }}" role="button">Create a new interview</a>
 		<table class="table table-bordered mt-4">
 			<thead>
 				<tr>
 					<th>Job</th>
 					<th>Company</th>
 					<th>Statut</th>
-					{# <th>Date</th> #}
-					<th>Edit interview</th>
 					<th>Details</th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for interview in interviews %}
-					{% if app.user.id == interview.owner.id %}
-						<tr>
-							<td>{{ interview.job }}</td>
-							<td>{{ interview.company }}</td>
-							<td>{{ interview.statut.name }}</td>
-							{# <td>{{ interview.date }}</td> #}
-							<td>
-								<a href="{{ path('app_interview_edit', {'id': interview.id}) }}">Edit</a>
-							</td>
-							<td>
-								<a href="{{ path('app_interview_show', {'id': interview.id}) }}">See</a>
-							</td>
-						</tr>
-					{% endif %}
-				{% else %}
 					<tr>
-						<td colspan="4">no records found</td>
+						<td>{{ interview.job }}</td>
+						<td>{{ interview.company }}</td>
+						<td>{{ interview.statut.name }}</td>
+						<td>
+							<a href="{{ path('interview_show', {'id': interview.id}) }}">See</a>
+						</td>
 					</tr>
 				{% endfor %}
 			</tbody>

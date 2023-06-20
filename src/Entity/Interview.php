@@ -19,16 +19,16 @@ class Interview
     #[Assert\NotBlank(message: 'Don\'t leave me empty')]
     private ?string $job = null;
 
-    #[ORM\ManyToOne(inversedBy: 'interviews')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Statut $statut = null;
-
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Don\'t leave me empty')]
     private ?string $company = null;
 
     #[ORM\ManyToOne(inversedBy: 'interviews')]
     private ?User $owner = null;
+    
+    #[ORM\ManyToOne(inversedBy: 'interviews')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Statut $statut = null;
 
     public function getId(): ?int
     {

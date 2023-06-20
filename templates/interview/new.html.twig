@@ -6,9 +6,9 @@
 {% block body %}
 	<div class="itw_new mt-4">
 		<h2>Create a new Interview</h2>
+		<a class="btn btn-primary mt-3 mb-4" href="{{ path('interview_index') }}" role="button">Back to my interviews</a>
 
 		{{ include('interview/_form.html.twig') }}
 
-		<a class="btn btn-primary mt-4" href="{{ path('app_interview_index') }}" role="button">Back to my interviews</a>
 	</div>
 {% endblock %}

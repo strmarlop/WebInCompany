@@ -6,10 +6,12 @@
 {% block body %}
 	<div class="itw_edit mt-4">
 		<h2>Edit an Interview</h2>
+		<a class="btn btn-primary mt-3 mb-4" href="{{ path('interview_index') }}" role="button">Back to my interviews</a>
 
-		{{ include('interview/_form.html.twig', {'button_label': 'Update'}) }}
-
-		<a class="btn btn-primary mt-4" href="{{ path('app_interview_index') }}" role="button">Back to my interviews</a>
+		{{ include('interview/_form.html.twig', {
+			'button_label': 'Update', 
+			'attr':{'class': 'btn btn-primary float-left mr-4' }
+		}) }}
 
 		{{ include('interview/_delete_form.html.twig') }}
 	</div>

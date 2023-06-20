@@ -1,0 +1,10 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<div class="no_itws mt-4">
+		<h2>Hello! This is your first time!</h2>
+
+		<h4>Do you want to add a new Interview?</h4>
+		<a class="btn btn-primary mt-4" href="{{ path('interview_new') }}" role="button">Create a new interview</a>
+	</div>
+{% endblock %}

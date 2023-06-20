@@ -32,6 +32,7 @@ class UserFixtures extends Fixture
             $user -> setPassword($hashedPassword);
 
             $manager -> persist($user);
+
             $this->addReference('user_' . $userInformation['email'], $user);
         }
         
